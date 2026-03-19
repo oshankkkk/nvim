@@ -1,6 +1,6 @@
 ## Installed Plugins
 
-Here is a list of all the plugins currently installed in this Neovim configuration:
+Plugin list:
 
 - **[folke/lazy.nvim](https://github.com/folke/lazy.nvim)**: A modern plugin manager for Neovim (bootstrapped).
 - **[navarasu/onedark.nvim](https://github.com/navarasu/onedark.nvim)**: A dark colorscheme for Neovim.
