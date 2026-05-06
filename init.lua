@@ -104,7 +104,31 @@ require("lazy").setup(
                 })
             end,
         },
+        {
+            "obsidian-nvim/obsidian.nvim",
+            version = "*", -- use latest release, remove to use latest commit
+            ---@module 'obsidian'
+            ---@type obsidian.config
+            opts = {
+                legacy_commands = false, -- this will be removed in 4.0.0
+                workspaces = {
+                    {
+                        name = "personal",
+                        path = "~/Documents/Obsidian Vault",
+                    },
+                },
+            },
+            config = function(_, opts)
+                require("obsidian").setup(opts)
+
+                vim.api.nvim_create_user_command("Obsnew", "Obsidian new", {})
+                vim.api.nvim_create_user_command("Obsls", "Obsidian quick_switch", {})
+                vim.api.nvim_create_user_command("Obstdy", "Obsidian today", {})
+                vim.api.nvim_create_user_command("Obsfind", "Obsidian search", {})
+            end,
+        },
         -- i dont need mason cause all my LSPs are inside nix-shells
+        --
         --mason 
         --{
         --    "mason-org/mason.nvim",
@@ -124,45 +148,45 @@ require("lazy").setup(
         {
             "neovim/nvim-lspconfig",
         },
-{
-  "nvim-mini/mini.files",
-  opts = {
-    content = {
-      filter = nil,
-      highlight = nil,
-      prefix = nil,
-      sort = nil,
-    },
+        {
+            "nvim-mini/mini.files",
+            opts = {
+                content = {
+                    filter = nil,
+                    highlight = nil,
+                    prefix = nil,
+                    sort = nil,
+                },
 
-    mappings = {
-    close       = "q",
-    go_in       = "<CR>",
-    go_in_plus  = "l",    
-    go_out      = "-",        
-    go_out_plus = "h",
-    reset       = "<BS>",
-    reveal_cwd  = "@",
-    show_help   = "g?",
-    synchronize = "=",
-    trim_left   = "<",
-    trim_right  = ">",
-  },
+                mappings = {
+                    close       = "q",
+                    go_in       = "<CR>",
+                    go_in_plus  = "l",    
+                    go_out      = "-",        
+                    go_out_plus = "h",
+                    reset       = "<BS>",
+                    reveal_cwd  = "@",
+                    show_help   = "g?",
+                    synchronize = "=",
+                    trim_left   = "<",
+                    trim_right  = ">",
+                },
 
-    options = {
-      permanent_delete = true,
-      use_as_default_explorer = true,
-      lsp_timeout = 1000,
-    },
+                options = {
+                    permanent_delete = true,
+                    use_as_default_explorer = true,
+                    lsp_timeout = 1000,
+                },
 
-    windows = {
-      max_number = math.huge,
-      preview = false,
-      width_focus = 50,
-      width_nofocus = 15,
-      width_preview = 25,
-    },
-  },
-},
+                windows = {
+                    max_number = math.huge,
+                    preview = false,
+                    width_focus = 50,
+                    width_nofocus = 15,
+                    width_preview = 25,
+                },
+            },
+        },
         {
             "sphamba/smear-cursor.nvim",
 
