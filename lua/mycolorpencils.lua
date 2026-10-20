@@ -297,7 +297,7 @@ require("lazy").setup({
 				workspaces = {
 					{
 						name = "personal",
-						path = "~/Documents/Obsidian Vault",
+						path = "~/Documents/Notes/",
 					},
 				},
 			},
